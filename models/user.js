@@ -19,6 +19,24 @@ var UserSchema = mongoose.Schema({
     password : {
         type : String,
         required : true
+    },
+    name : {
+      type : String,
+      required : true
+    },
+    email : {
+      type : String,
+      required : true
+    },
+    phoneno : {
+      type : String,
+      required : true
+    },
+    github : {
+      type : String
+    },
+    linkedin : {
+      type : String
     }
 });
 

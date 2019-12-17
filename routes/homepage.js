@@ -13,9 +13,19 @@ router.get('/signup',(req,res)=>{
 router.post('/signup',(req,res)=>{
     var username = req.body.username;
     var password = req.body.password;
+    var name = req.body.name;
+    var email = req.body.email;
+    var phoneno = req.body.phoneno;
+    var github = req.body.github;
+    var linkedin = req.body.linkedin;
     var user = new User();
     user.username = username;
     user.password = password;
+    user.name = name;
+    user.email = email;
+    user.phoneno = phoneno;
+    user.github = github;
+    user.linkedin = linkedin;
     user.save((err,data)=>{
         if(err)                                                          
         throw err;
