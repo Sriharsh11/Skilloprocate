@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const keyPublishable = 'pk_test_zsTHfmVb5jHHgxRbykHLvsON00KNJruUqH';
-const keySecret = 'sk_test_Gv3da0DhzmZ2PiCSYeUZGAMb008RKZumlP';
+const secret = require('../config/secret.js');
+const keyPublishable = secret.keyPublishable;
+const keySecret = secret.keySecret;
 const User = require('../models/user.js');
 
 const stripe = require("stripe")(keySecret);

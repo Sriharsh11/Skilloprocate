@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const engine = require('ejs-mate');
+const secret = require('./config/secret.js');
 
 const port= 3002;
 
@@ -25,5 +26,5 @@ app.use(displayRoutes);
 app.use(paymentsRoutes);
 
 app.listen(port,()=>{
-    console.log('app running on port 3002')
+    console.log(`app running on ${secret.port}`)
 });
