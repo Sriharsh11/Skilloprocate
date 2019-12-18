@@ -37,6 +37,12 @@ var UserSchema = mongoose.Schema({
     },
     linkedin : {
       type : String
+    },
+    skill : {
+      type : Array
+    },
+    price : {
+      type : String
     }
 });
 

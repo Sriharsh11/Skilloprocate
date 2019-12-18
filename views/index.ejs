@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment Details</title>
+</head>
+<body>
+    <form action="/charge/<%= user._id %>" method="post">
+        <script src="http://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="pk_test_zsTHfmVb5jHHgxRbykHLvsON00KNJruUqH" data-locale="auto" data-description="Sample Charge" data-amount="<%= user.price %>" ></script>
+    </form>
+</body>
+</html>

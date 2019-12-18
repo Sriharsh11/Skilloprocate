@@ -11,14 +11,18 @@ app.engine('ejs',engine);
 app.set('view engine','ejs');
 app.set('views','./views');
 
+app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(cookieParser());
 
 const homeRoutes = require("./routes/homepage.js");
-
+const displayRoutes = require("./routes/display.js");
+const paymentsRoutes = require('./routes/charge.js');
 
 app.use(homeRoutes);
+app.use(displayRoutes);
+app.use(paymentsRoutes);
 
 app.listen(port,()=>{
     console.log('app running on port 3002')
