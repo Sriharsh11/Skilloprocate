@@ -69,13 +69,16 @@ router.post('/login',(req,res)=>{
         if(err)
         throw err;
         else{
-            console.log(password);
-            console.log(user.password);
             if(!user){
                 res.send('incorrect credentials');
             } else {
-                res.cookie('username',user.username,{maxAge: 900000, httpOnly: true});
-                res.redirect('/home');
+                if(bcrypt.compareSync(password,user.password)){
+                    res.cookie('username',user.username,{maxAge: 900000, httpOnly: true});
+                    res.redirect('/home');
+                }
+                else{
+                    res.send('incorrect password');
+                }
             }
         }
     });
