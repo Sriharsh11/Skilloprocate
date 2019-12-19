@@ -43,6 +43,9 @@ var UserSchema = mongoose.Schema({
     },
     price : {
       type : String
+    },
+    rating : {
+      type : Array
     }
 });
 
