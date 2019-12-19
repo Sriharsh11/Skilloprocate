@@ -22,6 +22,7 @@ router.post('/signup',(req,res)=>{
     var linkedin = req.body.linkedin;
     var skill = req.body.skill;
     var price = req.body.price;
+    var skillArray = skill.split(',');
     var user = new User();
     user.username = username;
     user.password = password;
@@ -30,7 +31,7 @@ router.post('/signup',(req,res)=>{
     user.phoneno = phoneno;
     user.github = github;
     user.linkedin = linkedin;
-    user.skill = skill;
+    user.skill = skillArray;
     user.price = price;
     user.save((err,data)=>{
         if(err)                                                          

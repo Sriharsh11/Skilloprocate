@@ -39,7 +39,7 @@ var UserSchema = mongoose.Schema({
       type : String
     },
     skill : {
-      type : Array
+      type : [String]
     },
     price : {
       type : String

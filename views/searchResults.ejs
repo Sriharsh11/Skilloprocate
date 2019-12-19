@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>search results</title>
+</head>
+<body>
+    <% if(!count) { %>
+    No search matches
+    <% } else { %>
+        <% for(var i=0; i < users.length; i++) { %>    
+        <div>
+                <%= users[i].name %>
+                <br>
+                <%= users[i].username %>
+                <br>
+                <%= users[i].email %>
+                <br>
+                <%= users[i].phoneno %>
+                <br>
+                <%= users[i].github %>
+                <br>
+                <%= users[i].linkedin %>
+                <br>
+                <%= users[i].skill %>
+                <br>
+                <%= users[i].price %>
+                <br>
+                <a href="/charge/<%=users[i]._id %>">
+                    <button>Buy Now</button>
+                </a>
+        </div>
+        <% } %>
+            <% } %>
+</body>
+</html>

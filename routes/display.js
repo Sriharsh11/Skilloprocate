@@ -9,7 +9,8 @@ router.get('/display',(req,res)=>{
         if(err)
         throw err;
         else{
-            res.render('display.ejs',{user});
+            var username = req.cookies['username'];
+            res.render('display.ejs',{user,username});
         }
     });
 });
@@ -23,32 +24,35 @@ router.get('/about/:id',(req,res)=>{
         }
     });
 });
+var count = 0;
 
-router.get('/chat',(req,res)=>{
-    Message.find({},(err,messages)=>{
-        if(err)
-        throw err;
-        else{
-            // res.render('chat.ejs',{messages});
-            console.log(messages);
-            // res.send(messages);
-        }
-    });
+router.get('/search',(req,res)=>{
+    count = 0;
+    // console.log(count);
+    res.render('search.ejs',{count});
 });
 
-router.post('/chat',(req,res)=>{
-    var message = new Message(req.body);
-    message.save((err)=>{
+// router.get('/search/results',(req,res)=>{
+//     res.render('searchResults.ejs');
+// });
+
+router.post('/search',(req,res)=>{
+    var searchEntry = req.body.search;
+    // console.log(searchEntry);
+    User.find({skill:searchEntry},(err,users)=>{
+        // console.log(users);
         if(err)
         throw err;
-        else{
-            io.emit('message',req.body);
-        }
+        else if(users){
+                count++;
+                // console.log(count);
+                res.render('search.ejs',{users,count});
+            }
+            else
+                //console.log(count);
+            res.send('no search matches');
+        
     });
 });
-
-io.on('connection', () =>{
-    console.log('a user is connected')
-  });
 
 module.exports = router;

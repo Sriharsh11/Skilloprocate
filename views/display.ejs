@@ -8,12 +8,16 @@
 </head>
 <body>
     <% for(var i=0; i < user.length; i++) { %>
+        <% if(user[i].username!=username) { %>
         <a href="/about/<%= user[i]._id %>">
         <div>
     <%= user[i].name %>
+    <br>
     <%= user[i].skill %>
         </div>
         </a>
+        <% } %>
     <% } %>
+    <a href="http://localhost:3002/logout"><button>logout</button></a>
 </body>
 </html>
