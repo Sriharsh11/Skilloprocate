@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user.js');
+
 
 router.get('/',(req,res)=>{
     res.render('main.ejs');
@@ -41,15 +43,43 @@ router.post('/signup',(req,res)=>{
 })
 
 router.get('/home',(req,res)=>{
+    //checks if a cookie exists
     var username = req.cookies['username'];
+    if(username){
+        User.findOne({username:username},(err,user)=>{
+            if(err)
+            throw err;
+            else{
+                res.render('dashboard.ejs',{user});
+            }
+        });
+    } else {
+        res.send('login/signup first');
+    }
+});
+
+router.get('/login',(req,res)=>{
+    res.render('login.ejs');
+});
+
+router.post('/login',(req,res)=>{
+    var username = req.body.username;
+    var password = req.body.password;
     User.findOne({username:username},(err,user)=>{
         if(err)
         throw err;
         else{
-            res.render('dashboard.ejs',{user});
+            console.log(password);
+            console.log(user.password);
+            if(!user){
+                res.send('incorrect credentials');
+            } else {
+                res.cookie('username',user.username,{maxAge: 900000, httpOnly: true});
+                res.redirect('/home');
+            }
         }
-    })
-})
+    });
+});
 
 router.get('/logout',(req,res)=>{
     res.clearCookie('username');
