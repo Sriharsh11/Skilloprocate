@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
-mongoose.connect("mongodb://localhost:27017/skilloprocate",(err)=>{
+mongoose.connect("mongodb://Sriharsh11:marcoreus11@ds121950.mlab.com:21950/skilloprocate",(err)=>{
     if(err){
         throw err;
     } else {
