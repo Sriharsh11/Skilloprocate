@@ -27,7 +27,7 @@ router.post('/ip',(req,res)=>{
             console.log(ifname,iface.address);
             var geo = geoip.lookup(ip);
             //console.log(geo);
-            res.send(geo);
+            res.send(ip);
           }
           ++alias;
         });
