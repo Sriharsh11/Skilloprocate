@@ -7,7 +7,7 @@ var ifaces = os.networkInterfaces();
 
 router.use(expressip().getIpInfoMiddleware);
 
-router.get('/', function (req, res) {
+router.get('/ip', function (req, res) {
     const ipInfo = req.ipInfo;
     var message = `Hey, you are browsing from ${ipInfo.city}, ${ipInfo.country}`;
     res.send(message);
