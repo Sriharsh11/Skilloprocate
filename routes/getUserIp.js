@@ -9,7 +9,7 @@ router.get('/ip',(req,res)=>{
 });
 
 router.post('/ip',(req,res)=>{
-    var clientIP = req.connection.remoteAddress;
+    var clientIP = req.connection.remoteAddress || req.headers['x-forwarded-for'];
     res.send(clientIP);
 });
 
