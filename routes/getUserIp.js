@@ -9,6 +9,7 @@ router.use(expressip().getIpInfoMiddleware);
 
 router.get('/ip', function (req, res) {
     const ipInfo = req.ipInfo;
+    res.send(ipInfo);
     var message = `Hey, you are browsing from ${ipInfo.city}, ${ipInfo.country}`;
     res.send(message);
   });
