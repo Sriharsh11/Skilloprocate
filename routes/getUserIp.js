@@ -16,10 +16,10 @@ router.get('/ip', function (req, res) {
     // res.send(ipInfo);
     // var message = `Hey, you are browsing from ${ipInfo.city}, ${ipInfo.country}`;
     //res.send(message);
-    //res.send(ipInfo.ll);
-     var lat = ipInfo.ll[0];
-     var lng = ipInfo.ll[1];
-     res.send(lat);
+    res.send(ipInfo.ll[0]);
+    //  var lat = ipInfo.ll[0];
+    //  var lng = ipInfo.ll[1];
+    //  res.send(lat);
   });
 
 // router.get('/ip',(req,res)=>{
