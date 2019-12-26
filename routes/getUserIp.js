@@ -20,6 +20,7 @@ router.get('/ip', function (req, res) {
     //res.send(typeof(ipInfo.ll));
     var location = ipInfo.ll;
     var lat = location[Object.keys(location)[0]];
+    JSON.stringify(lat);;
     res.send(lat);
     // var lat = location[0];
     // var lng = location[1];
