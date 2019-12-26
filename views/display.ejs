@@ -37,11 +37,7 @@
 <body>
 
  <% for(var i=0; i < user.length; i++) { %>
-    <% if((user[i].username!=username)&&(geolib.isPointWithinRadius(
-        { latitude: <%= user[i].latitude %> , longitude: <%= user[i].longitude %> },
-        { latitude: <%= latitude %>, longitude: <%= longitude %> },
-        5000
-    ))) { %>
+    <% if(user[i].username!=username) { %>
  
 <div class="container">
   <div class="card" style="width:400px">
