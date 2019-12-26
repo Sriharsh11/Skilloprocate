@@ -20,8 +20,25 @@ router.get('/ip', function (req, res) {
     //res.send(typeof(ipInfo.ll));
     var location = ipInfo.ll;
     var lat = location[Object.keys(location)[0]];
-    var latitude = JSON.stringify(lat);;
-    res.send(latitude);
+    var lng = location[Object.keys(location)[1]];
+    var latitude = JSON.stringify(lat);
+    var longitude = JSON.stringify(lng);
+    var user = new User();
+    user.latitude = latitude;
+    user.longitude = longitude;
+    user.save((err)=>{
+        if(err)
+        throw err;
+        else{
+            User.find({},(err,user)=>{
+                if(err)
+                throw err;
+                else{
+                    res.render('display.ejs',{user,latitude,longitude});
+                }
+            });
+        }
+    });
     // var lat = location[0];
     // var lng = location[1];
     // res.send(lat);

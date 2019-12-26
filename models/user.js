@@ -46,6 +46,12 @@ var UserSchema = mongoose.Schema({
     },
     rating : {
       type : Array
+    },
+    latitude : {
+      type : String
+    },
+    longitude : {
+      type : String
     }
 });
 
