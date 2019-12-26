@@ -17,7 +17,7 @@ router.get('/ip', function (req, res) {
     // var message = `Hey, you are browsing from ${ipInfo.city}, ${ipInfo.country}`;
     //res.send(message);
     //res.send(ipInfo.ll);
-    res.send(typeof(ipInfo));
+    res.send(typeof(ipInfo.ll));
     // var location = ipInfo.ll;
     // var lat = location[0];
     // var lng = location[1];
