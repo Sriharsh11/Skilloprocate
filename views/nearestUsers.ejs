@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+  .grid-container {
+  display: grid;
+  grid-gap: 50px 100px;
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="lib/geolib.js"></script>
     <title>nearest users</title>
 </head>
 <body>
-    <%= closestUsers %>
+    <!-- <%= closestUsers %> -->
+    <div class="container">
+        <% for(var i=0; i < closestUsers.length; i++) { %>
+            <div class="card" style="width:400px">
+              <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" alt="Card image" style="width:100%">
+              <div class="card-body">
+                <h4 class="card-title"><%= closestUsers[i].name %></h4>
+                <p class="card-text"> <%= closestUsers[i].skill %> </p>
+                <a href="/about/<%= nearestUsers[i]._id %>" class="btn btn-primary stretched-link">See Profile</a>
+              </div>
+            </div>
+        <% } %>
+            </div>
 </body>
 </html>
