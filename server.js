@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const engine = require('ejs-mate');
 const secret = require('./config/secret.js');
+const path = require('path');
 
 //const port= 3002;
 
@@ -12,7 +13,7 @@ app.engine('ejs',engine);
 app.set('view engine','ejs');
 app.set('views','./views');
 
-app.use(express.static(__dirname));
+app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(cookieParser());

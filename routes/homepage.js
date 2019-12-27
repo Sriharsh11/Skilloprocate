@@ -1,7 +1,21 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt-nodejs');
+const multer = require('multer');
+const path = require('path');
 var User = require('../models/user.js');
 
+//set storage engine
+// const storage = multer.diskStorage({
+//     destination : '../public/uploads/',
+//     filename: function(req,file,cb){
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
+
+//init upload
+// const upload = multer({
+//     storage : storage
+// }).single('myImage');
 
 router.get('/',(req,res)=>{
     res.render('main.ejs');
@@ -21,6 +35,7 @@ router.post('/signup',(req,res)=>{
     var github = req.body.github;
     var linkedin = req.body.linkedin;
     var skill = req.body.skill;
+    console.log(name);
     var price = req.body.price;
     var skillArray = skill.split(',');
     var user = new User();
@@ -33,6 +48,20 @@ router.post('/signup',(req,res)=>{
     user.linkedin = linkedin;
     user.skill = skillArray;
     user.price = price;
+    // upload(req,res,(err)=>{
+    //     if(err)
+    //     throw err;
+    //     else{
+    //         if(req.file===undefined){
+    //             res.send('no file selected');
+    //         } else {
+    //             res.render('signup.ejs',{
+    //                 msg : 'file uploaded',
+    //                 file : `uploads/${req.file.filename}`
+    //             });
+    //         }
+    //     }
+    // });
     user.save((err,data)=>{
         if(err)                                                          
         throw err;

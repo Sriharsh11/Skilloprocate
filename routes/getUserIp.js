@@ -13,48 +13,13 @@ router.get('/getUserIp',(req,res)=>{
 
 router.get('/ip', function (req, res) {
     const ipInfo = req.ipInfo;
-    // res.send(ipInfo);
-    // var message = `Hey, you are browsing from ${ipInfo.city}, ${ipInfo.country}`;
-    //res.send(message);
-    //res.send(ipInfo.ll);
-    //res.send(typeof(ipInfo.ll));
     var location = ipInfo.ll;
     var lat = location[Object.keys(location)[0]];
     var lng = location[Object.keys(location)[1]];
-    var latitude = JSON.stringify(lat);
-    var longitude = JSON.stringify(lng);
-    var user = new User();
-    user.latitude = latitude;
-    user.longitude = longitude;
-    user.save((err)=>{
-        if(err)
-        throw err;
-        else{
-            User.find({},(err,user)=>{
-                if(err)
-                throw err;
-                else{
-                    res.render('display.ejs',{user,latitude,longitude});
-                }
-            });
-        }
-    });
-    // var lat = location[0];
-    // var lng = location[1];
-    // res.send(lat);
-    //  var lat = ipInfo.ll[0];
-    //  var lng = ipInfo.ll[1];
-    //  res.send(lat);
+    var latitude = lat.toString();
+    var longitude = lng.toString();
+    res.send(latitude);
   });
-
-// router.get('/ip',(req,res)=>{
-//     res.render('getUserIp.ejs');
-// });
-
-// router.post('/ip',(req,res)=>{
-//     var clientIP = req.connection.remoteAddress || req.headers['x-forwarded-for'];
-//     res.send(clientIP);
-// });
 
 
 module.exports = router;
