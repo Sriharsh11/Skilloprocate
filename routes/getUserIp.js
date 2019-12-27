@@ -37,6 +37,7 @@ router.get('/ip', function (req, res) {
         if(err)
         throw err;
         else{
+            
             var lat = parseFloat(user.latitude);
             var lng = parseFloat(user.longitude);
             User.find({},(err,nearUsers)=>{
