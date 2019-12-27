@@ -26,7 +26,7 @@
               <div class="card-body">
                 <h4 class="card-title"><%= closestUsers[i].name %></h4>
                 <p class="card-text"> <%= closestUsers[i].skill %> </p>
-                <a href="/about/<%= nearestUsers[i]._id %>" class="btn btn-primary stretched-link">See Profile</a>
+                <a href="/about/<%= closestUsers[i]._id %>" class="btn btn-primary stretched-link">See Profile</a>
               </div>
             </div>
         <% } %>
