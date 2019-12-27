@@ -20,7 +20,7 @@ router.get('/ip', function (req, res) {
     var lng = location[Object.keys(location)[1]];
     var latitude = lat.toString();
     var longitude = lng.toString();
-    User.findByIdAndUpdate({username: username},{$set:{latitude:latitude , longitude: longitude}},(err)=>{
+    User.findOneAndUpdate({username: username},{$set:{latitude:latitude , longitude: longitude}},(err)=>{
         if(err)
         throw err;
         else{
