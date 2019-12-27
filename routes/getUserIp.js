@@ -18,10 +18,8 @@ router.get('/ip', function (req, res) {
     var lng = location[Object.keys(location)[1]];
     var latitude = lat.toString();
     var longitude = lng.toString();
-    var user = new User();
-    user.latitude = latitude;
-    user.longitude = longitude;
-    user.save((err)=>{
+    var user = new User({latitude,longitude});
+    user.save((err,data)=>{
         if(err)
         throw err;
         else{

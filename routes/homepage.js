@@ -48,20 +48,6 @@ router.post('/signup',(req,res)=>{
     user.linkedin = linkedin;
     user.skill = skillArray;
     user.price = price;
-    // upload(req,res,(err)=>{
-    //     if(err)
-    //     throw err;
-    //     else{
-    //         if(req.file===undefined){
-    //             res.send('no file selected');
-    //         } else {
-    //             res.render('signup.ejs',{
-    //                 msg : 'file uploaded',
-    //                 file : `uploads/${req.file.filename}`
-    //             });
-    //         }
-    //     }
-    // });
     user.save((err,data)=>{
         if(err)                                                          
         throw err;
