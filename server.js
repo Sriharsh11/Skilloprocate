@@ -22,14 +22,14 @@ const homeRoutes = require("./routes/homepage.js");
 const displayRoutes = require("./routes/display.js");
 const paymentsRoutes = require('./routes/charge.js');
 const ratingRoutes = require('./routes/ratings.js');
-// const ipRoutes = require('./routes/getUserIp.js');
+const ipRoutes = require('./routes/getUserIp.js');
 const chatRoutes = require('./routes/chat.js');
 
 app.use(homeRoutes);
 app.use(displayRoutes);
 app.use(paymentsRoutes);
 app.use(ratingRoutes);
-// app.use(ipRoutes);
+app.use(ipRoutes);
 app.use(chatRoutes);
 
 app.listen(secret.port,()=>{
