@@ -22,8 +22,8 @@ const homeRoutes = require("./routes/homepage.js");
 const displayRoutes = require("./routes/display.js");
 const paymentsRoutes = require('./routes/charge.js');
 const ratingRoutes = require('./routes/ratings.js');
-const ipRoutes = require('./routes/getUserIp.js');
-const chatRoutes = require('./routes/chat.js');
+// const ipRoutes = require('./routes/getUserIp.js');
+// const chatRoutes = require('./routes/chat.js');
 
 app.use(homeRoutes);
 app.use(displayRoutes);
