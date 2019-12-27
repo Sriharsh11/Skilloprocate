@@ -38,12 +38,6 @@ router.post('/signup',(req,res)=>{
     console.log(name);
     var price = req.body.price;
     var skillArray = skill.split(',');
-    const ipInfo = req.ipInfo;
-    var location = ipInfo.ll;
-    var lat = location[Object.keys(location)[0]];
-    var lng = location[Object.keys(location)[1]];
-    var latitude = lat.toString();
-    var longitude = lng.toString();
     var user = new User();
     user.username = username;
     user.password = password;
@@ -54,8 +48,6 @@ router.post('/signup',(req,res)=>{
     user.linkedin = linkedin;
     user.skill = skillArray;
     user.price = price;
-    user.latitude = latitude;
-    user.longitude = longitude;
     user.save((err,data)=>{
         if(err)                                                          
         throw err;
