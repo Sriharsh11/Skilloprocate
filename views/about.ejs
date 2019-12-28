@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,5 +35,43 @@
                 </a>
             </div>
         
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<title>Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+
+  <div class="w3-card-4 w3-dark-grey" style="width:50%">
+
+    <div class="w3-container w3-center">
+      <h3>User Details</h3>
+      <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Avatar" style="width:80%">
+      <h5> Name : <%= user.name %> </h5>
+      <br>
+      <h5> Username : <%= user.username %> </h5>
+      <br>
+      <h5> Email : <%= user.email %> </h5>
+      <br>
+      <h5> Github : <%= user.github %> </h5>
+      <br>
+      <h5> LinkedIn : <%= user.linkedin %> </h5>
+      <br>
+      <h5> Skills : <%= user.skill %> </h5>
+      <br>
+      <h5> Price : <%= user.price %> </h5>
+      <div class="w3-section">
+        <a href="/charge/<%=user._id %>"><button class="w3-button w3-green">Buy Now</button></a> 
+       <a href="/ratings/<%= user._id %>"><button class="w3-button w3-red">Rate</button></a> 
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
