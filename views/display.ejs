@@ -41,7 +41,7 @@
   <script src="lib/geolib.js"></script>
 </head>
 <body>
-<div class="grid-container">
+<div class="grid-container container">
  <% for(var i=0; i < user.length; i++) { %>
     <% if(user[i].username!=username) { %>
  
@@ -52,12 +52,10 @@
       <h4 class="card-title"><%= user[i].name %></h4>
       <p class="card-text"><%= user[i].skill %></p>
       <a  href="/about/<%= user[i]._id %>" class="btn btn-primary" >See Profile</a>
-      <a  href="/logout" class="btn btn-primary">Logout</a>
-    </div>
   </div>
   <% } %>
 <% } %> 
- 
-
+</div>
+<a  href="/logout" class="btn btn-primary">Logout</a>
 </body>
 </html>
