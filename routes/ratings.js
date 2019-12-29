@@ -22,7 +22,20 @@ router.post('/ratings/:id',(req,res)=>{
                 if(err)
                 throw err;
                 else {
-                    res.redirect('/display');
+                    var arr = user.rating;
+                    var sum = 0;
+                    for(var i = 0; i < arr.length; i++){
+                        sum = sum + parseInt(arr[i]);
+                    }
+                    var avg = sum/arr.length ;
+                    user.avgRating = avg;
+                    user.save((err)=>{
+                        if(err)
+                        throw err;
+                        else{
+                            res.redirect('/display');
+                        }
+                    })
                 }
             });
         }
