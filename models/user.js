@@ -52,6 +52,12 @@ var UserSchema = mongoose.Schema({
     },
     longitude : {
       type : String
+    },
+    totalAmount : {
+      type : String
+    },
+    avgRating : {
+      type : String
     }
 });
 

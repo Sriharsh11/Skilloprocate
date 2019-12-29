@@ -35,7 +35,20 @@ router.post("/charge/:id", function(req, res) {
                     currency: "inr",
                     customer: customer.id
                 }))
-            .then(charge => res.render("charge.ejs")); // render the charge view: views/charge.pug
+                .then(()=>{
+                    if(user.totalAmount==="NaN"||!user.totalAmount){
+                        user.totalAmount = 0;
+                        //user.save();
+                    }
+                    var totalAmt = parseInt(amount) + parseInt(user.totalAmount);
+                    //console.log(parseInt(amount) + parseInt(user.totalAmount));
+                    user.totalAmount = totalAmt;
+                    user.save((err)=>{
+                        if(err)
+                        throw err;
+                    });
+                })
+            .then(charge => res.render("charge.ejs")); // render the charge view: views/charge.ejs
             }
         });
     });

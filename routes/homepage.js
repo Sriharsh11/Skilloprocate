@@ -48,6 +48,7 @@ router.post('/signup',(req,res)=>{
     user.linkedin = linkedin;
     user.skill = skillArray;
     user.price = price;
+    user.totalAmount = 0;
     user.save((err,data)=>{
         if(err)                                                          
         throw err;
@@ -90,6 +91,10 @@ router.post('/login',(req,res)=>{
             } else {
                 if(bcrypt.compareSync(password,user.password)){
                     res.cookie('username',user.username,{maxAge: 900000, httpOnly: true});
+                    if(user.totalAmount==="NaN"||!user.totalAmount){
+                        user.totalAmount = 0;
+                        user.save();
+                    }
                     res.redirect('/home');
                 }
                 else{

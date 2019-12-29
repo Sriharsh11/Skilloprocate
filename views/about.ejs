@@ -64,6 +64,12 @@
       <h5> Skills : <%= user.skill %> </h5>
       <br>
       <h5> Price : <%= user.price %> </h5>
+      <br>
+      <% if(!user.totalAmount) { %>
+        <h5> Total Amount Earned : 0 </h5>
+      <% } else { %>
+        <h5> Total Amount Earned : <%= user.totalAmount %> </h5>
+      <% } %>    
       <div class="w3-section">
         <a href="/charge/<%=user._id %>"><button class="w3-button w3-green">Buy Now</button></a> 
        <a href="/ratings/<%= user._id %>"><button class="w3-button w3-red">Rate</button></a> 
