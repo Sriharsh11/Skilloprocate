@@ -17,7 +17,7 @@ router.post('/ratings/:id',(req,res)=>{
         if(err)
         throw err;
         else{
-            user.rating = rating;
+            user.rating.push(rating);
             user.save((err)=>{
                 if(err)
                 throw err;
@@ -27,15 +27,15 @@ router.post('/ratings/:id',(req,res)=>{
                     for(var i = 0; i < arr.length; i++){
                         sum = sum + parseInt(arr[i]);
                     }
-                    var avg = sum/arr.length ;
-                    user.avgRating = avg;
+                    var avg = sum/(arr.length) ;
+                    user.avgRating = Math.round(avg * 100) / 100 ;
                     user.save((err)=>{
                         if(err)
                         throw err;
                         else{
                             res.redirect('/display');
                         }
-                    })
+                    });
                 }
             });
         }
