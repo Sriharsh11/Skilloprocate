@@ -35,7 +35,7 @@ router.post('/signup',(req,res)=>{
     var github = req.body.github;
     var linkedin = req.body.linkedin;
     var skill = req.body.skill;
-    console.log(name);
+    //console.log(name);
     var price = req.body.price;
     var skillArray = skill.split(',');
     var user = new User();

@@ -17,6 +17,7 @@ router.get('/ip', function (req, res) {
     //var id = req.params.id;
     const ipInfo = req.ipInfo;
     var location = ipInfo.ll;
+    console.log(ipInfo);
     var lat = location[Object.keys(location)[0]];
     var lng = location[Object.keys(location)[1]];
     var latitude = lat.toString();
@@ -25,10 +26,21 @@ router.get('/ip', function (req, res) {
         if(err)
         throw err;
         else{
-            res.redirect('/display');
+            res.redirect('/map');
         }
     });
   });
+
+router.get('/map',(req,res)=>{
+    var username = req.cookies['username'];
+    User.findOne({username:username},(err,user)=>{
+        if(err)
+        throw err;
+        else{
+           res.render('map.ejs',{user});
+          }
+    });
+});
 
   router.get('/nearestUsers',(req,res)=>{
     var username = req.cookies['username'];
@@ -37,7 +49,6 @@ router.get('/ip', function (req, res) {
         if(err)
         throw err;
         else{
-            
             var lat = parseFloat(user.latitude);
             var lng = parseFloat(user.longitude);
             User.find({},(err,nearUsers)=>{
